@@ -69,16 +69,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pattern="[[rootPath]]:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
-
-        <waapi-pages
-            animate-to="[[page]]"
-            loading="{{loading}}"
-            exit-playing="{{exitPlaying}}"
-            entry-playing="{{entryPlaying}}">
-          <my-view1  loading="[[loading]]" exit-playing="[[exitPlaying]]" entry-playing="[[entryPlaying]]"></my-view1>
-          <my-view2  loading="[[loading]]" exit-playing="[[exitPlaying]]" entry-playing="[[entryPlaying]]"></my-view2>
-          <my-view3  loading="[[loading]]" exit-playing="[[exitPlaying]]" entry-playing="[[entryPlaying]]"></my-view3>
-          <my-view404  loading="[[loading]]" exit-playing="[[exitPlaying]]" entry-playing="[[entryPlaying]]"></my-view404>
+        <waapi-pages page="[[page]]" animate="{{animate}}">
+          <my-view1 id="view1" animate="{{animate}}"></my-view1>
+          <my-view2 id="view2"></my-view2>
+          <my-view3 id="view3"></my-view3>
         </waapi-pages>
   </template>
 
@@ -88,6 +82,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
+          test: {
+            type: String
+          },
           page: {
             type: String,
             reflectToAttribute: true,

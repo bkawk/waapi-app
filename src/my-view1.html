@@ -26,14 +26,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <h1>View One</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <a href="#" on-click="_goToViewTwo">Go to view 2</a></br>
+      <a href="#" on-click="_goToViewThree">Go to view 3</a>
     </div>
   </template>
 
   <script>
     class MyView1 extends Polymer.Element {
       static get is() { return 'my-view1'; }
-    }
+    
+      static get properties() {
+        return {
+        /**
+        * The page we are on now
+        */
+        animate: {
+            type: Object,
+            reflectToAttribute: true,
+            notify: true,
+        }
+        };
+      }
 
-    window.customElements.define(MyView1.is, MyView1);
+      _goToViewTwo(){
+        this.animate = {
+          from: 'view1',
+          to: 'view2',
+          animation: 'slide-down',
+          duration: 3000,
+        }
+      }
+      _goToViewThree(){
+        this.animate = {
+          from: 'view1',
+          to: 'view3',
+          animation: 'slide-down',
+          duration: 3000,
+        }
+      }
+    } window.customElements.define(MyView1.is, MyView1);
   </script>
 </dom-module>
