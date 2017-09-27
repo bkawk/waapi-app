@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-view1">
   <template>
     <style include="shared-styles">
-      :host {
+       :host {
         display: block;
 
         padding: 10px;
@@ -25,7 +25,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="circle">1</div>
       <h1>View One</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
+        in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
       <a href="#" on-click="_goToViewTwo">Go to view 2</a></br>
       <a href="#" on-click="_goToViewThree">Go to view 3</a>
     </div>
@@ -34,29 +35,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyView1 extends Polymer.Element {
       static get is() { return 'my-view1'; }
-    
+
       static get properties() {
         return {
-        /**
-        * The page we are on now
-        */
-        animation: {
+          /**
+          * The page we are on now
+          */
+          animation: {
             type: Object,
             reflectToAttribute: true,
             notify: true,
-        }
+          }
         };
       }
 
-      _goToViewTwo(){
+      _goToViewTwo() {
         this.animation = {
           from: 'view1',
           to: 'view2',
-          animation: 'slide-down',
-          duration: 3000,
+          descriptionArray: [
+            { 'transform': 'translate(0)' },
+            { 'transform': 'translateY(300px)' },
+          ],
+          descriptionObject: {
+            fill: 'forwards',
+            duration: 3000,
+            iterations: 1,
+            iterationStart: 0,
+            easing: 'cubic-bezier(0.42,0,0.58,1)',
+            delay: 0,
+            endDelay: 400,
+          }
         }
       }
-      _goToViewThree(){
+
+      _goToViewThree() {
         this.animation = {
           from: 'view1',
           to: 'view3',
