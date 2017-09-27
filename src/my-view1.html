@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         /**
         * The page we are on now
         */
-        animate: {
+        animation: {
             type: Object,
             reflectToAttribute: true,
             notify: true,
@@ -49,7 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _goToViewTwo(){
-        this.animate = {
+        this.animation = {
           from: 'view1',
           to: 'view2',
           animation: 'slide-down',
@@ -57,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
       _goToViewThree(){
-        this.animate = {
+        this.animation = {
           from: 'view1',
           to: 'view3',
           animation: 'slide-down',
