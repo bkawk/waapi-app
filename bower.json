@@ -6,7 +6,7 @@
   "license": "https://polymer.github.io/LICENSE.txt",
   "dependencies": {
     "app-layout": "PolymerElements/app-layout#^2.0.0",
-    "app-route": "PolymerElements/app-route#^2.0.0",
+    "app-route": "PolymerElements/app-route#2.0-preview",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^2.0.0",
     "iron-media-query": "PolymerElements/iron-media-query#^2.0.0",
@@ -18,7 +18,9 @@
     "waapi-pages": "https://github.com/bkawk/waapi-pages.git"
   },
   "resolutions": {
-    "polymer": "^2.0.0"
+    "polymer": "^2.0.0",
+    "app-route": "^2.0.0",
+    "iron-location": "1 - 2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0"
