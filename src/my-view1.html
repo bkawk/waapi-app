@@ -24,9 +24,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <div class="circle">1</div>
       <h1>View One</h1>
-      <template is="dom-if" if="{{animation.exitPlaying}}">
-        Title is <b>IM ANIMATING</b>
-      </template>
+      <template is="dom-if" if="{{animation.entryPlaying}}">
+          Title is <b>IM ANIMATING - ENTRY</b>
+        </template>
+        <template is="dom-if" if="{{animation.exitPlaying}}">
+          Title is <b>IM ANIMATING - EXIT</b>
+        </template>
       <p>
         Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
@@ -49,7 +52,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Object,
             reflectToAttribute: true,
             notify: true,
-            observer: '_test',
           },
           /**
           * The entry animation for this page
@@ -58,17 +60,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Object,
             value: {
               descriptionArray: [
-                { 'transform': 'translate(300px)' },
+                { 'transform': 'translatex(-100%)' },
                 { 'transform': 'translateY(0)' },
               ],
               descriptionObject: {
                 fill: 'forwards',
-                duration: 300,
+                duration: 3000,
                 iterations: 1,
                 iterationStart: 0,
                 easing: 'cubic-bezier(0.42,0,0.58,1)',
                 delay: 0,
-                endDelay: 400,
+                endDelay: 0,
               }
             }
           }
@@ -113,13 +115,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
             delay: 0,
-            endDelay: 400,
+            endDelay: 0,
           }
         }
-      }
-      _test(){
-        console.log("hello");
-        console.log(this.animation);
       }
     } window.customElements.define(MyView1.is, MyView1);
   </script>

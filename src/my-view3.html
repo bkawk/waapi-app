@@ -24,12 +24,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <div class="circle">3</div>
       <h1>View Three</h1>
-      <template is="dom-if" if="{{animation.exitPlaying}}" restamp>
-        Title is <b>IM ANIMATING</b>
+      <template is="dom-if" if="{{animation.entryPlaying}}">
+        Title is <b>IM ANIMATING - ENTRY</b>
+      </template>
+      <template is="dom-if" if="{{animation.exitPlaying}}">
+        Title is <b>IM ANIMATING - EXIT</b>
       </template>
       <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
       <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax
         ei, ad pri animal labores suscipiantur.</p>
+      <a href="#" on-click="_goToViewOne">Go to view 1</a></br>
+      <a href="#" on-click="_goToViewTwo">Go to view 2</a>
     </div>
   </template>
 
@@ -66,7 +71,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 iterationStart: 0,
                 easing: 'cubic-bezier(0.42,0,0.58,1)',
                 delay: 0,
-                endDelay: 400,
+                endDelay: 0,
               }
             }
           }
@@ -78,17 +83,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           from: 'view3',
           to: 'view1',
           descriptionArray: [
-            { 'transform': 'translate(0)' },
-            { 'transform': 'translateY(300px)' },
+            { 'transform': 'translateY(0)' },
+            { 'transform': 'translateY(100%)' },
           ],
           descriptionObject: {
             fill: 'forwards',
-            duration: 900,
+            duration: 3000,
             iterations: 1,
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
             delay: 0,
-            endDelay: 400,
+            endDelay: 0,
           }
         }
       }
@@ -98,19 +103,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           from: 'view3',
           to: 'view2',
           descriptionArray: [
-            { 'transform': 'translate(0)' },
-            { 'transform': 'translateY(300px)' },
+            { 'transform': 'translateY(0)' },
+            { 'transform': 'translateY(100%)' },
           ],
           descriptionObject: {
             fill: 'forwards',
-            duration: 900,
+            duration: 3000,
             iterations: 1,
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
             delay: 0,
-            endDelay: 400,
+            endDelay: 0,
           }
         }
+        
       }
     } window.customElements.define(Myview3.is, Myview3);
   </script>
