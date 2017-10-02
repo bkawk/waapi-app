@@ -24,7 +24,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <div class="circle">1</div>
       <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+      <template is="dom-if" if="{{animation.exitPlaying}}">
+        Title is <b>IM ANIMATING</b>
+      </template>
+      <p>
+        Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
         in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
       <a href="#" on-click="_goToViewTwo">Go to view 2</a></br>
@@ -45,6 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Object,
             reflectToAttribute: true,
             notify: true,
+            observer: '_test',
           },
           /**
           * The entry animation for this page
@@ -71,12 +76,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       };
 
       _goToViewTwo() {
+
         this.animation = {
           from: 'view1',
           to: 'view2',
+          entryPlaying: false,
+          exitPlaying: false,
           descriptionArray: [
             { 'transform': 'translateX(0)' },
             { 'transform': 'translateX(-100%)' },
+          ],
+          descriptionObject: {
+            fill: 'forwards',
+            duration: 3000,
+            iterations: 1,
+            iterationStart: 0,
+            easing: 'cubic-bezier(0.42,0,0.58,1)',
+            delay: 0,
+            endDelay: 0,
+          }
+        }
+      }
+
+      _goToViewThree() {
+        this.animation = {
+          from: 'view1',
+          to: 'view3',
+          descriptionArray: [
+            { 'transform': 'translateY(0)' },
+            { 'transform': 'translateY(-100%)' },
           ],
           descriptionObject: {
             fill: 'forwards',
@@ -89,25 +117,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
       }
-
-      _goToViewThree() {
-        this.animation = {
-          from: 'view1',
-          to: 'view3',
-          descriptionArray: [
-          { 'transform': 'translateY(0)' },
-          { 'transform': 'translateY(-100%)' },
-        ],
-        descriptionObject: {
-          fill: 'forwards',
-          duration: 3000,
-          iterations: 1,
-          iterationStart: 0,
-          easing: 'cubic-bezier(0.42,0,0.58,1)',
-          delay: 0,
-          endDelay: 400,
-        }
-        }
+      _test(){
+        console.log("hello");
+        console.log(this.animation);
       }
     } window.customElements.define(MyView1.is, MyView1);
   </script>

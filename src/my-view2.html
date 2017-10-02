@@ -24,6 +24,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <div class="circle">2</div>
       <h1>View Two</h1>
+      <template is="dom-if" if="{{animation.entryPlaying}}" restamp>
+        Title is <b>IM ANIMATING</b>
+      </template>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
         in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
@@ -63,7 +66,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 iterationStart: 0,
                 easing: 'cubic-bezier(0.42,0,0.58,1)',
                 delay: 0,
-                endDelay: 400,
+                endDelay: 0,
               }
             }
           }
@@ -74,6 +77,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.animation = {
           from: 'view2',
           to: 'view1',
+          entryPlaying: false,
+          exitPlaying: false,
           descriptionArray: [
             { 'transform': 'translate(0)' },
             { 'transform': 'translateY(300px)' },
