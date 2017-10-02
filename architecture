@@ -1,0 +1,18 @@
+Every page has 2 properties:
+
+    - animation
+    - entryAnimation
+
+For every routechange there is a function changing animation property with 'to' and 'from' attributes and custom animation for exit.
+
+Every page loads with initial animation property = entryAnimation. Doesn't need 'to' and 'from'. Will change to different exitanimation on route change.
+
+_load() laadt de doelpagina (met entryAnimation)
+
+ALS doelpagina geladen is EN ALS oorsprongpagine exitanimation afgelopen is, moet doelpagina zijn entryAnimation inladen.
+
+hoe doelpagina laten weten dat de exitanimation van oorsprongpagina gedaan is zodat hij zijn entryAnimation kan inladen?
+
+change name animatino to exitanimation? Since thats is its only use.
+
+The entryAnimation is limited to 1 / page, unless we want to load a different one in at callback, dependent on originpage
