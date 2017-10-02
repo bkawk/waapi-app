@@ -62,18 +62,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: bold;
       }
 
-
     </style>
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-    
+  
     <waapi-pages page="[[page]]" animation="{{animation}}">
       <my-view1 id="view1" animation="{{animation}}"></my-view1>
-      <my-view2 id="view2"></my-view2>
-      <my-view3 id="view3"></my-view3>
+      <my-view2 id="view2" animation="{{animation}}"></my-view2>
+      <my-view3 id="view3" animation="{{animation}}"></my-view3>
     </waapi-pages>
-    
+
   </template>
 
   <script>
