@@ -45,17 +45,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Object,
             reflectToAttribute: true,
             notify: true,
+          },
+          /**
+          * The entry animation for this page
+          */
+          entryAnimation: {
+            type: Object,
+            value: {
+              descriptionArray: [
+                { 'transform': 'translate(300px)' },
+                { 'transform': 'translateY(0)' },
+              ],
+              descriptionObject: {
+                fill: 'forwards',
+                duration: 300,
+                iterations: 1,
+                iterationStart: 0,
+                easing: 'cubic-bezier(0.42,0,0.58,1)',
+                delay: 0,
+                endDelay: 400,
+              }
+            }
           }
-        };
-      }
+        }
+      };
 
       _goToViewTwo() {
         this.animation = {
           from: 'view1',
           to: 'view2',
           descriptionArray: [
-            { 'transform': 'translate(0)' },
-            { 'transform': 'translateY(300px)' },
+            { 'transform': 'translateX(0)' },
+            { 'transform': 'translateX(-100%)' },
           ],
           descriptionObject: {
             fill: 'forwards',
@@ -73,8 +94,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.animation = {
           from: 'view1',
           to: 'view3',
-          animation: 'slide-down',
-          duration: 3000,
+          descriptionArray: [
+          { 'transform': 'translate(0)' },
+          { 'transform': 'translateY(300px)' },
+        ],
+        descriptionObject: {
+          fill: 'forwards',
+          duration: 900,
+          iterations: 1,
+          iterationStart: 0,
+          easing: 'cubic-bezier(0.42,0,0.58,1)',
+          delay: 0,
+          endDelay: 400,
+        }
         }
       }
     } window.customElements.define(MyView1.is, MyView1);

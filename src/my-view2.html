@@ -22,8 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
+      <div class="circle">2</div>
+      <h1>View Two</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
         in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
@@ -53,12 +53,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Object,
             value: {
               descriptionArray: [
-                { 'transform': 'translate(300px)' },
-                { 'transform': 'translateY(0)' },
+                { 'transform': 'translateX(100%)' },
+                { 'transform': 'translateX(0)' },
               ],
               descriptionObject: {
                 fill: 'forwards',
-                duration: 300,
+                duration: 3000,
                 iterations: 1,
                 iterationStart: 0,
                 easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -70,17 +70,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         };
       }
 
-      _goToViewTwo() {
+      _goToViewOne() {
         this.animation = {
-          from: 'view1',
-          to: 'view2',
+          from: 'view2',
+          to: 'view1',
           descriptionArray: [
             { 'transform': 'translate(0)' },
             { 'transform': 'translateY(300px)' },
           ],
           descriptionObject: {
             fill: 'forwards',
-            duration: 300,
+            duration: 900,
             iterations: 1,
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -94,8 +94,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.animation = {
           from: 'view2',
           to: 'view3',
-          animation: 'slide-down',
-          duration: 3000,
+          descriptionArray: [
+            { 'transform': 'translate(0)' },
+            { 'transform': 'translateY(300px)' },
+          ],
+          descriptionObject: {
+            fill: 'forwards',
+            duration: 900,
+            iterations: 1,
+            iterationStart: 0,
+            easing: 'cubic-bezier(0.42,0,0.58,1)',
+            delay: 0,
+            endDelay: 400,
+          }
         }
       }
     } window.customElements.define(Myview2.is, Myview2);

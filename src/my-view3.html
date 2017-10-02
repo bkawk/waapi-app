@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-view3">
   <template>
     <style include="shared-styles">
-      :host {
+       :host {
         display: block;
 
         padding: 10px;
@@ -25,15 +25,88 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="circle">3</div>
       <h1>View Three</h1>
       <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax
+        ei, ad pri animal labores suscipiantur.</p>
     </div>
   </template>
 
   <script>
     class MyView3 extends Polymer.Element {
       static get is() { return 'my-view3'; }
-    }
 
-    window.customElements.define(MyView3.is, MyView3);
+      static get properties() {
+        return {
+          /**
+          * The page we are on now
+          */
+          animation: {
+            type: Object,
+            reflectToAttribute: true,
+            notify: true,
+          },
+          /**
+          * The entry animation for this page
+          */
+          entryAnimation: {
+            type: Object,
+            value: {
+              descriptionArray: [
+                { 'transform': 'translate(300px)' },
+                { 'transform': 'translateY(0)' },
+              ],
+              descriptionObject: {
+                fill: 'forwards',
+                duration: 300,
+                iterations: 1,
+                iterationStart: 0,
+                easing: 'cubic-bezier(0.42,0,0.58,1)',
+                delay: 0,
+                endDelay: 400,
+              }
+            }
+          }
+        };
+      }
+
+      _goToViewOne() {
+        this.animation = {
+          from: 'view3',
+          to: 'view1',
+          descriptionArray: [
+            { 'transform': 'translate(0)' },
+            { 'transform': 'translateY(300px)' },
+          ],
+          descriptionObject: {
+            fill: 'forwards',
+            duration: 900,
+            iterations: 1,
+            iterationStart: 0,
+            easing: 'cubic-bezier(0.42,0,0.58,1)',
+            delay: 0,
+            endDelay: 400,
+          }
+        }
+      }
+
+      _goToViewTwo() {
+        this.animation = {
+          from: 'view3',
+          to: 'view2',
+          descriptionArray: [
+            { 'transform': 'translate(0)' },
+            { 'transform': 'translateY(300px)' },
+          ],
+          descriptionObject: {
+            fill: 'forwards',
+            duration: 900,
+            iterations: 1,
+            iterationStart: 0,
+            easing: 'cubic-bezier(0.42,0,0.58,1)',
+            delay: 0,
+            endDelay: 400,
+          }
+        }
+      }
+    } window.customElements.define(Myview3.is, Myview3);
   </script>
 </dom-module>
