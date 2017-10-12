@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-view2">
   <template>
     <style include="shared-styles">
-       :host {
+      :host {
         display: block;
 
         padding: 10px;
@@ -25,15 +25,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div class="circle">2</div>
       <h1>View Two</h1>
       <template is="dom-if" if="{{animation.entryPlaying}}">
-        Title is <b>IM ANIMATING - ENTRY</b>
+        Title is
+        <b>IM ANIMATING - ENTRY</b>
       </template>
       <template is="dom-if" if="{{animation.exitPlaying}}">
-        Title is <b>IM ANIMATING - EXIT</b>
+        Title is
+        <b>IM ANIMATING - EXIT</b>
       </template>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
         in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <a href="#" on-click="_goToViewOne">Go to view 1</a></br>
+      <a href="#" on-click="_goToViewOne">Go to view 1</a>
+      </br>
       <a href="#" on-click="_goToViewThree">Go to view 3</a>
     </div>
   </template>
@@ -65,14 +68,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       ready() {
         super.ready();
-        this.entryAnimation =  {
+        this.entryAnimation = {
           descriptionArray: [
             { 'transform': 'translateX(100%)' },
             { 'transform': 'translateX(0)' },
           ],
           descriptionObject: {
             fill: 'forwards',
-            duration: 300,
+            duration: 1000,
             iterations: 1,
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -92,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           ],
           descriptionObject: {
             fill: 'forwards',
-            duration: 3000,
+            duration: 1000,
             iterations: 1,
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
@@ -112,7 +115,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           ],
           descriptionObject: {
             fill: 'forwards',
-            duration: 3000,
+            duration: 1000,
             iterations: 1,
             iterationStart: 0,
             easing: 'cubic-bezier(0.42,0,0.58,1)',
