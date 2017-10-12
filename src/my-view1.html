@@ -16,8 +16,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
+      }
+      .link {
+        cursor: pointer;
+        text-decoration: underline;
+        color: blue;
       }
     </style>
 
@@ -35,9 +39,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per
         in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-      <div on-click="_goToViewTwo">Go to view 2</div>
+      <div class="link" on-click="_goToViewTwo">Go to view 2</div>
       </br>
-      <div on-click="_goToViewThree">Go to view 3</div>
+      <div class="link" on-click="_goToViewThree">Go to view 3</div>
     </div>
   </template>
 
