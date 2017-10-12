@@ -57,32 +57,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           * The entry animation for this page
           */
           entryAnimation: {
-            type: Object,
-            value: {
-              descriptionArray: [
-                { 'transform': 'translateX(-100%)' },
-                { 'transform': 'translateX(0)' },
-              ],
-              descriptionObject: {
-                fill: 'forwards',
-                duration: 3000,
-                iterations: 1,
-                iterationStart: 0,
-                easing: 'cubic-bezier(0.42,0,0.58,1)',
-                delay: 0,
-                endDelay: 0,
-              }
-            }
+            type: Object
           }
         }
       };
 
+      ready() {
+        super.ready();
+        this.entryAnimation =  {
+          descriptionArray: [
+            { 'transform': 'translateX(-100%)' },
+            { 'transform': 'translateX(0)' },
+          ],
+          descriptionObject: {
+            fill: 'forwards',
+            duration: 300,
+            iterations: 1,
+            iterationStart: 0,
+            easing: 'cubic-bezier(0.42,0,0.58,1)',
+            delay: 0,
+            endDelay: 0,
+          }
+        }
+      }
       _goToViewTwo() {
         this.animation = {
           from: 'view1',
           to: 'view2',
-          entryPlaying: false,
-          exitPlaying: false,
           descriptionArray: [
             { 'transform': 'translateX(0)' },
             { 'transform': 'translateX(-100%)' },
