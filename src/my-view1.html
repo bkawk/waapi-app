@@ -10,6 +10,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 
 <dom-module id="my-view1">
   <template>
@@ -25,6 +27,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+<app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+<app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <div class="card">
       <div class="circle">1</div>
       <h1>View One</h1>
@@ -107,7 +111,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _goToViewThree() {
-        this.animation = {
+        this.set ('route.path', 'view3');
+        /*this.animation = {
           from: 'view1',
           to: 'view3',
           descriptionArray: [
@@ -123,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             delay: 0,
             endDelay: 0,
           }
-        }
+        }*/
       }
     } window.customElements.define(MyView1.is, MyView1);
   </script>
