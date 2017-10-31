@@ -58,7 +58,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           /**
           * The animation object.
           */
-          animation: {
+          pageTransition: {
             type: Object,
             reflectToAttribute: true,
             notify: true,
@@ -90,42 +90,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }
       }
+
       _goToViewTwo() {
-        this.animation = {
+        this.pageTransition = {
           from: 'view1',
           to: 'view2',
-          descriptionArray: [
-            { 'transform': 'translateX(0)' },
-            { 'transform': 'translateX(-100%)' },
-          ],
-          descriptionObject: {
-            fill: 'forwards',
-            duration: 1000,
-            iterations: 1,
-            iterationStart: 0,
-            easing: 'cubic-bezier(0.42,0,0.58,1)',
-            delay: 0,
-            endDelay: 0,
+          exitAnimation: {
+            descriptionArray: [
+              { 'transform': 'translateX(0)' },
+              { 'transform': 'translateX(-100%)' },
+            ],
+            descriptionObject: {
+              fill: 'forwards',
+              duration: 1000,
+              iterations: 1,
+              iterationStart: 0,
+              easing: 'cubic-bezier(0.42,0,0.58,1)',
+              delay: 0,
+              endDelay: 0,
+            }
           }
         }
       }
 
       _goToViewThree() {
-        this.animation = {
+        this.pageTransition = {
           from: 'view1',
           to: 'view3',
-          descriptionArray: [
-            { 'transform': 'translateY(0)' },
-            { 'transform': 'translateY(-100%)' },
-          ],
-          descriptionObject: {
-            fill: 'forwards',
-            duration: 1000,
-            iterations: 1,
-            iterationStart: 0,
-            easing: 'cubic-bezier(0.42,0,0.58,1)',
-            delay: 0,
-            endDelay: 0,
+          exitAnimation: {
+            descriptionArray: [
+              { 'transform': 'translateY(0)' },
+              { 'transform': 'translateY(-100%)' },
+            ],
+            descriptionObject: {
+              fill: 'forwards',
+              duration: 1000,
+              iterations: 1,
+              iterationStart: 0,
+              easing: 'cubic-bezier(0.42,0,0.58,1)',
+              delay: 0,
+              endDelay: 0,
+            }
           }
         }
       }

@@ -66,10 +66,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-    <waapi-pages page="[[page]]" route="{{route}}" animation="{{animation}}">
-      <my-view1 id="view1" animation="{{animation}}"></my-view1>
-      <my-view2 id="view2" animation="{{animation}}"></my-view2>
-      <my-view3 id="view3" animation="{{animation}}"></my-view3>
+    <waapi-pages page="[[page]]" route="{{route}}" page-transition="{{pageTransition}}">
+      <my-view1 id="view1" page-transition="{{pageTransition}}"></my-view1>
+      <my-view2 id="view2" page-transition="{{pageTransition}}"></my-view2>
+      <my-view3 id="view3" page-transition="{{pageTransition}}"></my-view3>
     </waapi-pages>
 
   </template>
