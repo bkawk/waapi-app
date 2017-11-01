@@ -164,24 +164,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _newTransition() {
-        this.pageTransition
-        if (this.pageTransition.from == this.pageId) {
-          this._giveExitAnimation(this.pageTransition.to);
-        } else if (this.pageTransition.to == this.pageId) {
-          this._giveEntryAnimation(this.pageTransition.from);
+        if (this.pageTransition) {
+          if (this.pageTransition.from == this.pageId) {
+            this._giveExitAnimation(this.pageTransition.to);
+          } else if (this.pageTransition.to == this.pageId) {
+            this._giveEntryAnimation(this.pageTransition.from);
+          }
         }
       }
 
       _giveExitAnimation() {
-        this.pageTransition.exitAnimation = this.exitAnimations.filter((exitAnimation) => {
-          return exitAnimation.to == this.pageTransition.to;
-        });
+        if (this.pageTransition) {
+          this.pageTransition.exitAnimation = this.exitAnimations.filter((exitAnimation) => {
+            return exitAnimation.to == this.pageTransition.to;
+          });
+        }
       }
 
       _giveEntryAnimation() {
-        this.pageTransition.entryAnimation = this.entryAnimations.filter((entryAnimation) => {
-          return entryAnimation.from == this.pageTransition.from;
-        });
+        if (this.pageTransition) {
+          this.pageTransition.entryAnimation = this.entryAnimations.filter((entryAnimation) => {
+            return entryAnimation.from == this.pageTransition.from;
+          });
+        }
       }
     } window.customElements.define(Myview3.is, Myview3);
   </script>
