@@ -25,7 +25,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="my-app">
   <template>
     <style>
-       :host {
+      :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
 
@@ -61,15 +61,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: black;
         font-weight: bold;
       }
-
     </style>
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-    <waapi-pages page="[[page]]" route="{{route}}" page-transition="{{pageTransition}}">
-      <my-view1 id="view1" page-transition="{{pageTransition}}"></my-view1>
-      <my-view2 id="view2" page-transition="{{pageTransition}}"></my-view2>
-      <my-view3 id="view3" page-transition="{{pageTransition}}"></my-view3>
+    <waapi-pages page="[[page]]" route="{{route}}" route-history="{{routeHistory}}" animations="{{animations}}" entry-playing="{{entryPlaying}}"
+      exit-playing="{{exitPlaying}}">
+      <my-view1 id="view1" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></my-view1>
+      <my-view2 id="view2" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></my-view2>
+      <my-view3 id="view3" entry-playing="{{entryPlaying}}" exit-playing="{{exitPlaying}}"></my-view3>
     </waapi-pages>
 
   </template>
@@ -93,6 +93,224 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           // This shouldn't be neccessary, but the Analyzer isn't picking up
           // Polymer.Element#rootPath
           rootPath: String,
+          routeHistory: {
+            type: Array,
+            observer: '_loadAnimations',
+          },
+          animations: {
+            type: Object,
+            notify: true,
+          },
+          animationsArray: {
+            Type: Array,
+            value: [
+              {
+                from: 'view1',
+                to: 'view2',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(100%)' },
+                    { 'transform': 'translateX(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(-100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                }
+              },
+              {
+                from: 'view1',
+                to: 'view3',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(100%)' },
+                    { 'transform': 'translateY(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(-100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+              },
+              {
+                from: 'view2',
+                to: 'view1',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(-100%)' },
+                    { 'transform': 'translateX(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateX(0)' },
+                    { 'transform': 'translateX(100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                }
+              },
+              {
+                from: 'view2',
+                to: 'view3',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(100%)' },
+                    { 'transform': 'translateY(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(-100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+              },
+              {
+                from: 'view3',
+                to: 'view1',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(-100%)' },
+                    { 'transform': 'translateY(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                }
+              },
+              {
+                from: 'view3',
+                to: 'view2',
+                entryAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(-100%)' },
+                    { 'transform': 'translateY(0)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+                exitAnimation: {
+                  descriptionArray: [
+                    { 'transform': 'translateY(0)' },
+                    { 'transform': 'translateY(100%)' },
+                  ],
+                  descriptionObject: {
+                    fill: 'forwards',
+                    duration: 1000,
+                    iterations: 1,
+                    iterationStart: 0,
+                    easing: 'cubic-bezier(0.42,0,0.58,1)',
+                    delay: 0,
+                    endDelay: 0,
+                  }
+                },
+              },
+            ]
+          }
+
         };
       }
 
@@ -123,8 +341,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           true);
       }
 
+      _loadAnimations() {
+        if (this.routeHistory[0] != this.routeHistory[1]) {
+          for (let i = 0; i < this.animationsArray.length; i++) {
+            if (this.animationsArray[i].from == this.routeHistory[0] && this.animationsArray[i].to == this.routeHistory[1]) {
+              this.animations = this.animationsArray[i];
+            }
+          }
+
+
+
+          /* this.animations = this.animationsArray.filter((obj) => {
+            return obj.from == this.routeHistory[0] && obj.to == this.routeHistory[1];
+          }); */
+        }
+      }
+
       _showPage404() {
         this.page = 'view404';
+
       }
     }
 

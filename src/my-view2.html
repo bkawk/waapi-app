@@ -10,13 +10,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 
 <dom-module id="my-view2">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
-        padding: 10px;
+        padding: 150px;
       }
 
       .link {
@@ -26,14 +28,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+<app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+<app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <div class="card">
       <div class="circle">2</div>
       <h1>View Two</h1>
-      <template is="dom-if" if="{{pageTransition.entryPlaying}}">
+      <template is="dom-if" if="{{entryPlaying}}">
         Title is
         <b>IM ANIMATING - ENTRY</b>
       </template>
-      <template is="dom-if" if="{{pageTransition.exitPlaying}}">
+      <template is="dom-if" if="{{exitPlaying}}">
         Title is
         <b>IM ANIMATING - EXIT</b>
       </template>
@@ -52,142 +56,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       static get properties() {
         return {
-          /**
-          * The animation object.
-          */
-          pageTransition: {
+          route: {
             type: Object,
-            reflectToAttribute: true,
             notify: true,
-            observer: '_newTransition'
           },
-          /**
-          * The entry animation for this page
-          */
-          entryAnimations: {
-            type: Array,
-            value: [
-              {
-                from: 'view1',
-                descriptionArray: [
-                  { 'transform': 'translateX(100%)' },
-                  { 'transform': 'translateX(0)' },
-                ],
-                descriptionObject: {
-                  fill: 'forwards',
-                  duration: 1000,
-                  iterations: 1,
-                  iterationStart: 0,
-                  easing: 'cubic-bezier(0.42,0,0.58,1)',
-                  delay: 0,
-                  endDelay: 0,
-                }
-              },
-              {
-                from: 'view3',
-                descriptionArray: [
-                  { 'transform': 'translateY(-100%)' },
-                  { 'transform': 'translateY(0)' },
-                ],
-                descriptionObject: {
-                  fill: 'forwards',
-                  duration: 1000,
-                  iterations: 1,
-                  iterationStart: 0,
-                  easing: 'cubic-bezier(0.42,0,0.58,1)',
-                  delay: 0,
-                  endDelay: 0,
-                }
-              }
-            ]
+          exitPlaying: {
+            type: Boolean,
           },
-          /**
-          * The exit animation for this page
-          */
-          exitAnimations: {
-            type: Array,
-            value: [
-              {
-                to: 'view1',
-                descriptionArray: [
-                  { 'transform': 'translateX(0)' },
-                  { 'transform': 'translateX(100%)' },
-                ],
-                descriptionObject: {
-                  fill: 'forwards',
-                  duration: 1000,
-                  iterations: 1,
-                  iterationStart: 0,
-                  easing: 'cubic-bezier(0.42,0,0.58,1)',
-                  delay: 0,
-                  endDelay: 0,
-                }
-
-              },
-              {
-                to: 'view3',
-                descriptionArray: [
-                  { 'transform': 'translateY(0)' },
-                  { 'transform': 'translateY(-100%)' },
-                ],
-                descriptionObject: {
-                  fill: 'forwards',
-                  duration: 1000,
-                  iterations: 1,
-                  iterationStart: 0,
-                  easing: 'cubic-bezier(0.42,0,0.58,1)',
-                  delay: 0,
-                  endDelay: 0,
-                }
-              }
-            ]
+          exitPlaying: {
+            type: Boolean,
           },
-          pageId: {
-            type: String,
-            value: 'view2'
-          }
-
-        };
-      }
-      _goToViewOne() {
-        this.pageTransition = {
-          from: this.pageId,
-          to: 'view1',
         }
+      };
+
+      _goToViewOne() {
+        this.set('route.path', 'view1/');
       }
 
       _goToViewThree() {
-        this.pageTransition = {
-          from: this.pageId,
-          to: 'view3',
-        }
+        console.log('test');
+        this.set('route.path', 'view3/');
       }
 
-      _newTransition() {
-        if (this.pageTransition) {
-          if (this.pageTransition.from == this.pageId) {
-            this._giveExitAnimation(this.pageTransition.to);
-          } else if (this.pageTransition.to == this.pageId) {
-            this._giveEntryAnimation(this.pageTransition.from);
-          }
-        }
-      }
-
-      _giveExitAnimation() {
-        if (this.pageTransition) {
-          this.pageTransition.exitAnimation = this.exitAnimations.filter((exitAnimation) => {
-            return exitAnimation.to == this.pageTransition.to;
-          });
-        }
-      }
-
-      _giveEntryAnimation() {
-        if (this.pageTransition) {
-          this.pageTransition.entryAnimation = this.entryAnimations.filter((entryAnimation) => {
-            return entryAnimation.from == this.pageTransition.from;
-          });
-        }
-      }
     } window.customElements.define(Myview2.is, Myview2);
   </script>
 </dom-module>
